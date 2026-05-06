@@ -151,10 +151,11 @@ public class SudokuBoard {
       for(int r = 0; r < board.length; r++) {
          for(int c = 0; c < board[0].length; c++) {
             if(board[r][c] == '-') {
+                  // Placing number 1 - 9 in each spots
                for(char digit = '1'; digit <= '9'; digit++) {
-                  board[r][c] = digit;
-                  if(solved()) {
-                     return true;
+                  board[r][c] = digit; // Try a number
+                  if(solved()) { 
+                     return true;   // Found solution and ends recursion
                   }             
                }
                return false;
@@ -174,8 +175,8 @@ public class SudokuBoard {
             result.append(board[r][c]);
          }
          result.append("\n");
-         result.append("–––");
-         result.append("|–––".repeat(8));
+         result.append("---");
+         result.append("|---".repeat(8));
          result.append("\n");
       }
       result.append(" ");

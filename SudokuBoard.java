@@ -151,9 +151,13 @@ public class SudokuBoard {
       for(int r = 0; r < board.length; r++) {
          for(int c = 0; c < board[0].length; c++) {
             if(board[r][c] == '-') {
-               if(solved()) {
-                  return true;
-               }             
+               for(char digit = '1'; digit <= '9'; digit++) {
+                  board[r][c] = digit;
+                  if(solved()) {
+                     return true;
+                  }             
+               }
+               return false;
             }
          }
       }

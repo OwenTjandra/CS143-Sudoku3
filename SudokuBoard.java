@@ -148,6 +148,11 @@ public class SudokuBoard {
    }
    
    public boolean solved() {
+      if(!isValid()) 
+         return false;
+      if(isSolved()) 
+         return true;
+   
       for(int r = 0; r < board.length; r++) {
          for(int c = 0; c < board[0].length; c++) {
             if(board[r][c] == '-') {
@@ -156,7 +161,8 @@ public class SudokuBoard {
                   board[r][c] = digit; // Try a number
                   if(solved()) { 
                      return true;   // Found solution and ends recursion
-                  }             
+                  }  
+                  board[r][c] = '-';           
                }
                return false;
             }
